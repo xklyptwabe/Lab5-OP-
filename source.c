@@ -2,14 +2,20 @@
 #include <stdio.h>
 #include <math.h>
 
-int main(){
-	double a = -3;
-	double b = -2;
-	double h = 0;
+int main() {
+    double a = -3;
+    double b = -2;
+    double h;
 
-	printf("Enter step:");
-	scanf_s("%lf", &h);
-	tab(a, b, h);
+    printf("Enter step: ");
+    scanf_s("%lf", &h);
 
-	return 0;
+    if (h <= 0) {
+        printf("Step must be > 0\n");
+        return 1;
+    }
+
+    tab(a, b, h);
+
+    return 0;
 }

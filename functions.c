@@ -11,16 +11,13 @@ double firstTask(double x){
 double secondTask(double x, double* y){
 	double res = firstTask(x);
 	*y = res;
-	if (*y == 0)
-	{
+	if (*y == 0){
 		return 0;
 	}
-	else if (*y > 0)
-	{
+	else if (*y > 0){
 		return 1;
 	}
-	else
-	{
+	else{
 		return -1;
 	}
 }
@@ -34,19 +31,29 @@ void tab(double a, double b, double h){
 	printf("_________________________________________________________________\n");
 	printf("|\t\tX\t\t|\t\tY\t\t|\n");
 	printf("_________________________________________________________________\n");
-	for (double x = a; x <= b; x += h)
-	{
-		printf("|\t\t%lf\t|\t\t%lf\t|\n", x, firstTask(x));
-		printf("_________________________________________________________________\n");
+	for (double x = a; x <= b; x += h){
+		if (fabs(x) <= 1) {
+			printf("|\t\t%lf\t|\t\tNot defined\t|\n", x);
+			printf("_________________________________________________________________\n");
+			continue;
+		}
+		else {
+			printf("|\t\t%lf\t|\t\t%lf\t|\n", x, firstTask(x));
+			printf("_________________________________________________________________\n");
+		}
 	}
 	printf("\n\n");
 	printf("_________________________________________________________________________\n");
-		printf("|\t\t\t\tSecond task:\t\t\t\t|\n");
+	printf("|\t\t\t\tSecond task:\t\t\t\t|\n");
 	printf("_________________________________________________________________________\n");
-		printf("|\t\tX\t|\t\tY\t|\tResult\t\t|\n");
+	printf("|\t\tX\t|\t\tY\t|\tResult\t\t|\n");
 	printf("_________________________________________________________________________\n");
-		for (double x = a; x <= b; x += h)
-		{
+		for (double x = a; x <= b; x += h){
+			if (fabs(x) <= 1) {
+				printf("|\t%lf\t|\tNot defined\t|\t---\t|\n", x);
+				printf("_________________________________________________________________________\n");
+				continue;
+			}
 			res = secondTask(x, &y);
 			printf("|\t%lf\t|\t%lf\t|\t%lf\t|\n", x, y, res);
 			printf("_________________________________________________________________________\n");
